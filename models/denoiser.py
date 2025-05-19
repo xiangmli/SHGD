@@ -56,7 +56,7 @@ class ScoreMixer(nn.Module):
         self.hidden = nn.Linear(hidden_dim, hidden_dim)
         self.out = nn.Linear(hidden_dim, 1)
         self.activation = activation
-        self.t_embed2_proj = nn.Linear(self.embed_dim, n_items)  # n_items 即 c.shape[1]
+        self.t_embed2_proj = nn.Linear(self.embed_dim, n_items)
 
     def forward(self, inputs):
         t_embed2_proj = self.t_embed2_proj(inputs[-1])

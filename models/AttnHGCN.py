@@ -230,7 +230,7 @@ class AttnHGCN(nn.Module):
         # normalization by head_node degree
         norm = scatter_sum(torch.ones_like(head), head, dim=0, dim_size=entity_emb.shape[0])
         norm = torch.index_select(norm, 0, head)
-        edge_attn_score = edge_attn_score * norm  # 注意力分数乘头结点的度，应该是度越大得分越高还是反之？
+        edge_attn_score = edge_attn_score * norm
         # print attn score
         if print:
             self.logger.info("edge_attn_score std: {}".format(edge_attn_score.std()))

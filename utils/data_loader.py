@@ -98,7 +98,7 @@ def build_sparse_knowledge_graph(ckg_graph, n_entities, n_items):
         if h_id >= n_items and t_id < n_items:
             rows.append(h_id)
             cols.append(t_id)
-            data.append(1)  # 表示存在关系
+            data.append(1)
         if h_id < n_items and t_id >= n_items:
             rows.append(t_id)
             cols.append(h_id)

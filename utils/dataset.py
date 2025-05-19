@@ -20,7 +20,6 @@ class KGDataset(Dataset):
 class KGTripleDataset(Dataset):
     def __init__(self, ckg_graph):
         self.triples = []
-        # 遍历知识图谱中所有的边，注意 MultiDiGraph 的 edges(keys=True) 返回 (h, t, r)
         for h, t, r in ckg_graph.edges(keys=True):
             self.triples.append((h, r, t))
 

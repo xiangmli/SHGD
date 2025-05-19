@@ -238,7 +238,6 @@ def train_recommender(model, n_user, n_item, n_entities, n_nodes, n_relations, a
 
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
 
-    # 构建完整数据集，并做一次负采样
     full_dataset = RecDataset(adj_mat)
     full_dataset.neg_sampling(n_item)
     rec_dataloader = DataLoader(full_dataset, batch_size=args.rec_batch_size, shuffle=True)
