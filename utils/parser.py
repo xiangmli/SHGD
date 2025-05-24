@@ -1,7 +1,7 @@
 import argparse
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="KGHDiff")
+    parser = argparse.ArgumentParser(description="SHDF")
 
     parser.add_argument("--dataset", nargs="?", default="last-fm", help="Choose a dataset:[last-fm,amazon-book,alibaba]")
     parser.add_argument("--data_path", nargs="?", default="data/", help="Input data path.")

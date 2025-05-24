@@ -121,7 +121,6 @@ class SHGD(Recommender):
             cache_file = os.path.join(cache_path, 'eigen.npy')
             eigen = compute_eigen_with_cache(adj_right, ideal_cutoff, cache_file)
         print("done!")
-        # 将 eigen 数据注册为 buffer，保证随模型保存移动
         self.register_buffer('eigen_val', torch.tensor(eigen['values'], dtype=torch.float32))
         self.register_buffer('eigen_vec', torch.tensor(eigen['vectors'], dtype=torch.float32))
         self.entity_embeddings = entity_embeddings
@@ -169,7 +168,6 @@ class SHGD(Recommender):
         return self.noise_scale * (self.noise_decay ** (self.T - t))
 
     def denoise(self, z_t, c, Ac, t, training=False):
-        # 若 t 维度不足则广播至 (batch, 1)
         if t.dim() == 1:
             t = t.unsqueeze(1)
         x_pred = self.denoiser(z_t, c, Ac, t, training)
@@ -181,7 +179,6 @@ class SHGD(Recommender):
         x = self.entity_embeddings
         x = x.to(device)
         #indices = self.kgsp._indices()
-        # indices[0]: 源节点 i， indices[1]: 邻居节点 j
         #src, dst = indices[0], indices[1]
         #src, dst = src.to(x.device), dst.to(x.device)
         src = torch.from_numpy(self.kgsp.row.astype(np.int64)).to(device)
