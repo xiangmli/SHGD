@@ -1,31 +1,48 @@
-# SHDF
+# 📖 A Spectral Heterogeneous Diffusion Framework for Knowledge-aware Recommendation
 
-## Environment
-The codes of SHDF are implemented and tested under the following environment:
+## ⚙️ Environment
+The codes of **SHDF** are implemented and tested under the following environment:
 
-python = 3.8.20
+- Python = 3.8.20  
+- PyTorch = 2.4.0  
+- NumPy = 1.24.3  
+- SciPy = 1.10.1  
 
-torch = 2.4.0
+For a complete setup, you can install all dependencies with:  
+```bash
+pip install -r requirements.txt
+```
 
-numpy = 1.24.3
+## 📂 Datasets
 
-scipy = 1.10.1
+We follow the paper *"Knowledge Graph Self-Supervised Rationalization for Recommendation"* to preprocess the datasets.
 
-## Datasets
-We follow the paper "Knowledge Graph Self-Supervised Rationalization
-for Recommendation" to process data
+## 🚀 Training
 
-## Training
+We provide training commands for three benchmark datasets:
 
-- Last-FM dataset
-```bash 
+- **Last-FM**
+
+```
 python main.py --dataset last-fm --epochs 200 --lr 0.0001 --latdim 64
 ```
-- Mind-f dataset
-```bash 
-python main.py --dataset mind-f --epochs 100 --lr 0.001 --latdim 64
+
+- **Mind-F**
+
 ```
-- alibaba-fashion dataset
-```bash 
-python main.py --dataset last-fm --epochs 250 --lr 0.001 --latdim 64
+python main.py --dataset mind-f --epochs 100 --lr 0.001 --latdim 32
 ```
+
+- **Alibaba-Fashion**
+
+```
+python main.py --dataset alibaba-fashion --epochs 250 --lr 0.001 --latdim 64
+```
+
+## 📑 Supplementary Material
+
+We also provide supplementary materials containing:
+
+- Detailed proofs of the formulas presented in the paper
+- Time and space complexity analysis of the proposed framework
+
